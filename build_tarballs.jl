@@ -15,7 +15,7 @@ cd $WORKSPACE/srcdir/InsightToolkit-*
 
 mkdir ITK-build
 cd ITK-build
-cmake ../ITK -DBUILD_SHARED_LIBS=ON -DCMAKE_INSTALL_PREFIX=$prefix -DCMAKE_TOOLCHAIN_FILE=/opt/$target/$target.toolchain
+cmake ../ -DBUILD_SHARED_LIBS=ON -DCMAKE_INSTALL_PREFIX=$prefix -DCMAKE_TOOLCHAIN_FILE=/opt/$target/$target.toolchain
 make install -j${nproc}
 """
 
