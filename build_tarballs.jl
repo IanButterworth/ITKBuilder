@@ -6,7 +6,7 @@ version = v"5.0.1"
 # Collection of sources required to build zlib
 sources = [
     "https://github.com/InsightSoftwareConsortium/ITK/releases/download/v$(version)/InsightToolkit-$(version).tar.gz" =>
-    "c3e5e9fdd5004dcb542feda5ee4f0ff0744628baf8ed2dd5d66f8ca1197cb1a1",
+    "613b125cbf58481e8d1e36bdeacf7e21aba4b129b4e524b112f70c4d4e6d15a6",
 ]
 
 # Bash recipe for building across all platforms
