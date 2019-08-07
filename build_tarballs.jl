@@ -12,10 +12,9 @@ sources = [
 # Bash recipe for building across all platforms
 script = raw"""
 cd $WORKSPACE/srcdir/InsightToolkit-*
-
-mkdir ITK-build
-cd ITK-build
+mkdir build && cd build
 cmake ../ -DBUILD_SHARED_LIBS=ON -DCMAKE_INSTALL_PREFIX=$prefix -DCMAKE_TOOLCHAIN_FILE=/opt/$target/$target.toolchain
+cmake -C ~/TryRunResults.cmake ../
 make install -j${nproc}
 """
 
