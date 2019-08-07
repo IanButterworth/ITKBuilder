@@ -13,8 +13,8 @@ sources = [
 script = raw"""
 cd $WORKSPACE/srcdir/InsightToolkit-*
 mkdir build && cd build
-cmake ../ -DBUILD_SHARED_LIBS=ON -DCMAKE_INSTALL_PREFIX=$prefix -DCMAKE_TOOLCHAIN_FILE=/opt/$target/$target.toolchain
-cmake -C ~/TryRunResults.cmake ../
+cmake ../ -DCMAKE_CXX_STANDARD=11 -DBUILD_SHARED_LIBS=ON -DCMAKE_INSTALL_PREFIX=$prefix -DCMAKE_TOOLCHAIN_FILE=/opt/$target/$target.toolchain
+cmake -C TryRunResults.cmake ../
 make install -j${nproc}
 """
 
