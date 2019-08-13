@@ -13,7 +13,31 @@ sources = [
 script = raw"""
 cd $WORKSPACE/srcdir/InsightToolkit-*
 mkdir build && cd build
-cmake ../ -DBUILD_EXAMPLES=OFF -DBUILD_TESTING=OFF -DCMAKE_BUILD_TYPE=Release -DBUILD_SHARED_LIBS=ON -DCMAKE_INSTALL_PREFIX=$prefix -DCMAKE_TOOLCHAIN_FILE=/opt/$target/$target.toolchain
+
+if [[ "${target}" == i686-linux-* ]]; then
+    export EMU=
+elif [[ "${target}" == x86_64-linux-* ]]; then
+    export EMU=
+elif [[ "${target}" == arm-linux-* ]]; then
+    export EMU=
+elif [[ "${target}" == powerpc64le-linux-* ]]; then
+    export EMU=
+elif [[ "${target}" == x86_64-apple-* ]]; then
+    export EMU=
+elif [[ "${target}" == i686-w64-mingw32 ]]; then
+    export EMU=
+elif [[ "${target}" == x86_64-w64-mingw32 ]]; then
+    export EMU=
+elif [[ "${target}" == *freebsd* ]]; then
+    export EMU=
+elif [[ "${target}" == aarch64-linux-* ]]; then
+    export EMU=
+else
+    export EMU=
+fi
+
+cmake ../ -DCMAKE_CROSSCOMPILING_EMULATOR=${EMU} -DBUILD_EXAMPLES=OFF -DBUILD_TESTING=OFF -DCMAKE_BUILD_TYPE=Release -DBUILD_SHARED_LIBS=ON -DCMAKE_INSTALL_PREFIX=$prefix -DCMAKE_TOOLCHAIN_FILE=/opt/$target/$target.toolchain
+
 cmake -C TryRunResults.cmake ../
 make install -j${nproc}
 """
